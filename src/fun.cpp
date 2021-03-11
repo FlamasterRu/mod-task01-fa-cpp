@@ -1,3 +1,4 @@
+#include <iostream>
 unsigned int faStr1(const char* str)
 {
     unsigned int result = 0;
