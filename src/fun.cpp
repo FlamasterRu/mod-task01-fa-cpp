@@ -1,4 +1,18 @@
-#include <iostream>
+unsigned int round(double n)
+{
+    double b = n * 10;
+    int a = b;
+    a %= 10;
+    if (a < 5)
+    {
+        return static_cast<unsigned int>(n);
+    }
+    else
+    {
+        return static_cast<unsigned int>(n) + 1;
+    }
+}
+
 unsigned int faStr1(const char* str)
 {
     unsigned int result = 0;
