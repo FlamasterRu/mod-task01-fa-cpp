@@ -89,5 +89,5 @@ unsigned int faStr3(const char* str)
         sum += count;
     }
     double r = sum / word;
-    return std::round(r);
+    return round(r);
 }
