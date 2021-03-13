@@ -71,23 +71,32 @@ unsigned int faStr2(const char* str)
 unsigned int faStr3(const char* str)
 {
     unsigned int result = 0;
-    double sum = 0;
-    double word = 0;
-    for (int i = 0; str[i] != '\0'; ++i)
+    int i = 0, count = 0;
+    double word = 0, sum = 0;
+    char state = 'a';
+    while (str[i] != '\0')
     {
-        if (str[i] == ' ')
+        if ((state == 'a') && (str[i] != ' '))
         {
-            continue;
+            count = 1;
+            state = 'b';
+            ++word;
         }
-        ++word;
-        int count = 0;
-        while ((str[i] != ' ') && (str[i] != '\0'))
+        else if ((state == 'b') && (str[i] != ' '))
         {
             ++count;
-            ++i;
         }
+        else if ((state == 'b') && (str[i] == ' '))
+        {
+            sum += count;
+            state = 'a';
+            count = -1;
+        }
+        ++i;
+    }
+    if (count != -1)
+    {
         sum += count;
     }
-    double r = sum / word;
-    return round(r);
+    return round(sum/word);
 }
